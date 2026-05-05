@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yield Farming</title>
+<link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.min.js"></script>
+</head>
+
+<body>
+
+<h1>🌾 Yield Farming</h1>
+
+<button onclick="connect()">Connect Wallet</button>
+<p id="wallet"></p>
+
+<h2>Deposit</h2>
+<input id="pid" placeholder="Pool ID">
+<input id="amount" placeholder="Amount">
+<button onclick="deposit()">Deposit</button>
+
+<h2>Withdraw</h2>
+<input id="withdrawPid" placeholder="Pool ID">
+<input id="withdrawAmount" placeholder="Amount">
+<button onclick="withdraw()">Withdraw</button>
+
+<h2>Check Rewards</h2>
+<input id="rewardPid" placeholder="Pool ID">
+<button onclick="checkRewards()">Check</button>
+
+<p id="status"></p>
+
+<script src="script.js"></script>
+
+</body>
+</html>
