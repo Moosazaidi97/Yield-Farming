@@ -1,47 +1,29 @@
-let provider, signer, farm;
+# 🌾 Yield Farming (Advanced DeFi)
 
-const farmAddress = "YOUR_FARM_ADDRESS";
+Multi-pool yield farming smart contract.
 
-const abi = [
-  "function deposit(uint256,uint256)",
-  "function withdraw(uint256,uint256)",
-  "function pendingReward(uint256,address) view returns(uint256)"
-];
+## ✨ Features
+- Multiple pools
+- Reward per block
+- Deposit / Withdraw
+- Pending rewards
 
-async function connect() {
-  provider = new ethers.providers.Web3Provider(window.ethereum);
-  await provider.send("eth_requestAccounts", []);
+## 🛠 Tech
+- Solidity
+- Ethers.js
 
-  signer = provider.getSigner();
-  const address = await signer.getAddress();
+## ▶️ Usage
+1. Deploy reward token
+2. Deploy farm contract
+3. Add pools
+4. Users deposit tokens
 
-  document.getElementById("wallet").innerText = address;
+## ⚠️ Important
+- Contract must hold reward tokens
+- Allocation points control rewards
 
-  farm = new ethers.Contract(farmAddress, abi, signer);
-}
-
-async function deposit() {
-  let pid = document.getElementById("pid").value;
-  let amount = ethers.utils.parseEther(document.getElementById("amount").value);
-
-  await farm.deposit(pid, amount);
-  document.getElementById("status").innerText = "Deposited!";
-}
-
-async function withdraw() {
-  let pid = document.getElementById("withdrawPid").value;
-  let amount = ethers.utils.parseEther(document.getElementById("withdrawAmount").value);
-
-  await farm.withdraw(pid, amount);
-  document.getElementById("status").innerText = "Withdrawn!";
-}
-
-async function checkRewards() {
-  let pid = document.getElementById("rewardPid").value;
-  let addr = await signer.getAddress();
-
-  let reward = await farm.pendingReward(pid, addr);
-
-  document.getElementById("status").innerText =
-    "Rewards: " + ethers.utils.formatEther(reward);
-}
+## 🚀 Future Improvements
+- UI dashboard
+- Auto-compounding
+- Emission control
+- Fee system
